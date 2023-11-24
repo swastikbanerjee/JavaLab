@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class AlphabetWarGame {
     private static final String DEFAULT_LEFT_STRENGTH = "wpbs"; //The final keyword signifies that the entity to which it is applied cannot be changed or overridden.
     private static final String DEFAULT_RIGHT_STRENGTH = "mqdz";
-
     private String leftStrength;
     private String rightStrength;
 
@@ -24,13 +23,11 @@ public class AlphabetWarGame {
     public String battle(String leftWord, String rightWord) {
         int leftScore = calculateScoreL(leftWord, leftStrength);
         int rightScore = calculateScoreR(rightWord, rightStrength);
-
         return determineWinner(leftScore, rightScore);
     }
 
     private int calculateScoreL(String word, String strength) {
         int score = 0;
-
         for (char letter : word.toCharArray()) {
             score += strength.indexOf(letter) != -1 ? strength.length() - strength.indexOf(letter) : 0;
         }
@@ -40,7 +37,6 @@ public class AlphabetWarGame {
 
     private int calculateScoreR(String word, String strength) {
         int score = 0;
-
         for (char letter : word.toCharArray()) {
             score += strength.indexOf(letter) != -1 ? strength.length() - strength.indexOf(letter) : 0;
         }
@@ -61,7 +57,6 @@ public class AlphabetWarGame {
     private String determineWinner(String word, String leftStrength, String rightStrength) {
         int leftScore = calculateScoreL(word, leftStrength);
         int rightScore = calculateScoreR(word, rightStrength);
-
         return determineWinner(leftScore, rightScore);
     }
 
@@ -71,19 +66,15 @@ public class AlphabetWarGame {
         System.out.println();
         AlphabetWarGame game1 = new AlphabetWarGame();
         System.out.println(game1.battle("z")); // Right side wins!
-
         // Example 2
         AlphabetWarGame game2 = new AlphabetWarGame("wpbs", "mqdz");
         System.out.println(game2.battle("zdqmwpbs")); // Let's fight again!
-
         // Example 3
         AlphabetWarGame game3 = new AlphabetWarGame();
         System.out.println(game3.battle("wwwwwwz")); // Left side wins!
-
         // Example 4
         AlphabetWarGame game4 = new AlphabetWarGame("wpbs", "mqdz");
         System.out.println(game4.battle("wwwwww", "zzz")); // Let's fight again!
-
         // User Input Example
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the left word: ");
