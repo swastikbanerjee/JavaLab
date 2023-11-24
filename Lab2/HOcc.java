@@ -2,17 +2,13 @@ import java.util.Scanner;
 
 public class HOcc {
     private static int[] arr;
-
     private static void TopK(int K) {
         int[] freq = new int[100];
-
         for (int num : arr) {
             freq[num]++;
         }
-
         int[][] uniqNums = new int[100][2];
         int count = 0;
-
         for (int i = 0; i < freq.length; i++) {
             if (freq[i] > 0) {
                 uniqNums[count][0] = i; // Number
@@ -20,26 +16,22 @@ public class HOcc {
                 count++;
             }
         }
-
         for (int i = 0; i < count; i++) {
             for (int j = i + 1; j < count; j++) {
                 if (uniqNums[i][1] < uniqNums[j][1] ||
                     (uniqNums[i][1] == uniqNums[j][1] && uniqNums[i][0] < uniqNums[j][0])) {
-
                     int[] temp = uniqNums[i];
                     uniqNums[i] = uniqNums[j];
                     uniqNums[j] = temp;
                 }
             }
         }
-
         System.out.print("Output: ");
         for (int i = 0; i < K; i++) {
             System.out.print(uniqNums[i][0] + " ");
         }
         System.out.println();
     }
-
     public static void main(String[] args) {
         int[] testCase1 = {3, 1, 4, 4, 5, 2, 6, 1};
         System.out.println("Sample Test Case 1:");
@@ -57,7 +49,6 @@ public class HOcc {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the size of your array: ");
         int size = 0;
-
         // Validating user input for array size
         while (true) {
             try {
@@ -83,7 +74,6 @@ public class HOcc {
 
         System.out.print("Enter the value of K: ");
         int K = 0;
-
         // Validating user input for K
         while (true) {
             try {
